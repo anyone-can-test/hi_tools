@@ -1,0 +1,8 @@
+http://mintnlatte.tistory.com/55
+
+
+USB device 찾기
+sudo fdisk -l
+
+마운트
+ sudo mount -t vfat /dev/sdg1 /mnt/usb

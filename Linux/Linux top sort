@@ -1,0 +1,10 @@
+N
+sort tasks by pid (numerically).
+A
+sort tasks by age (newest first).
+P
+sort tasks by CPU usage (default).
+M
+sort tasks by resident memory usage.
+T
+sort tasks by time / cumulative time.

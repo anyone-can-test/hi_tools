@@ -1,0 +1,28 @@
+virtual machine 생성
+
+http://www.linuxuser.co.uk/tutorials/build-a-headless-virtualisation-server
+
+
+virtual machine 시작
+sudo VBoxHeadless --startvm puppet_master
+
+
+
+네트웍 설정
+sudo VBoxManage hostonlyif create >/dev/null 2>&1
+sudo VBoxManage modifyvm puppet_master --nic1 nat --nic2 hostonly --hostonlyadapter1 vboxnet0
+
+
+clone vdi
+VBoxManage clonevdi BaseLine.VDI Other.VDI
+
+CD 롬 제거 (부팅 완료 후)
+ VBoxManage storageattach puppet_master --storagectl "IDE Controller" --port 0 --device 0 --medium none
+
+
+부팅 시 시작
+http://askubuntu.com/questions/57220/start-vboxheadless-vm-at-startup
+
+
+NAT Port Forwarding 
+사용 전에 nat eth0를 활성화 해야 함

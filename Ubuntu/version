@@ -1,0 +1,11 @@
+$ cat /etc/issue
+Ubuntu 10.10 \n \l
+
+또는
+
+$  lsb_release -a
+No LSB modules are available.
+Distributor ID:        Ubuntu
+Description:        Ubuntu 10.10
+Release:        10.10
+Codename:        maverick

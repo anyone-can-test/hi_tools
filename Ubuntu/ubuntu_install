@@ -1,0 +1,16 @@
+삽질 종일.....
+
+dpkg -i xx.deb
+==> dependency가 자동으로 확인되지 않으므로 필요한 패키지를 수동으로 구해서 설치해야 한다.
+
+어떤 패키지가 필요한지 확인
+apt-get -f install
+apt-cache depends [package]
+aptitude show [package]
+
+설치 시 패키지들 끼리 버전이 호환되어야 함
+
+
+apt-get install 시 다운로드 폴더
+- /var/cache/apt/archives
+- 복사하여 dpkg -i *

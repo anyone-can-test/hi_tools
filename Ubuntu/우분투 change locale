@@ -1,0 +1,7 @@
+http://askubuntu.com/questions/89976/how-to-change-the-default-locale-in-ubuntu-10-10-server
+
+/etc/default/locale
+
+sudo dpkg-reconfigure locales
+
+logout and login

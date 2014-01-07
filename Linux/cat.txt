@@ -1,0 +1,3 @@
+파일에 이상한 문자가 있는지 검사
+
+-v : print non-printing characters

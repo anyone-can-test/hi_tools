@@ -1,0 +1,3 @@
+/etc/apt/sources.list
+
+deb file:/media/usb precise main

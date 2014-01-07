@@ -1,0 +1,29 @@
+http://www.crocoware.com/2012/12/install-virtualbox-on-an-ubuntu-server/
+
+# cd /usr/src
+# wget http://download.virtualbox.org/virtualbox/4.2.4/virtualbox-4.2_4.2.4-81684~Ubuntu~precise_amd64.deb
+# apt-get install libgl1-mesa-glx libxmu6 libxt6
+# dpkg -i virtualbox-4.2_4.2.4-81684~Ubuntu~precise_amd64.deb
+# wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+# apt-get update
+# echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | tee /etc/apt/sources.list.d/virtualbox.list
+# apt-get install dkms
+# wget http://download.virtualbox.org/virtualbox/4.2.4/Oracle_VM_VirtualBox_Extension_Pack-4.2.4-81684.vbox-extpack
+# VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-4.2.4-81684.vbox-extpack
+# adduser vbox
+# adduser vbox vboxusers
+# /etc/init.d/vboxweb-service restart
+
+
+sudo apt-get -f install
+
+
+
+dpkg -i virtualbox
+다수의 package가 없다는 메시지가 나옴
+apt-get -f install
+필요한 package를 알아서 설치함 (?)
+설치 로그 확인 (/var/log/vbox-install.log)에 에러 있음
+build_in_tmp: make: not found
+apt-get install dkms
+virtualbox 재설치 (DKMS: install completed)

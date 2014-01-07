@@ -1,0 +1,5 @@
+http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-ubuntu
+
+iso 파일 다운로드
+
+The command for the startup disk creator is usb-creator-gtk. Run it as root with gksudo usb-creator-gtk

@@ -1,0 +1,36 @@
+proxy 설정
+- plugin 설치하기 위해 proxy 설정해야 함: ip, port
+
+/etc/apt/apt.conf 에
+Acquire::http::Proxy "http://172.21.17.110:9999/";
+
+브라우저에서 Proxy설정은
+http://172.21.17.110:3128로 설정 후 이용 가능합니다
+
+wget
+Take a look at your .wgetrc or /etc/wgetrc and define there your proxy server. Then use wget --proxy-user=.. --proxy-passwd=..
+
+.wgetrc 파일을 수정하거나 http_proxy 환경변수를 세팅하면 됨
+export no_proxy="192.168.0.1,localdomain"
+
+
+
+sudo gem install -p http://172.21.17.110:3128 bundler
+export HTTP_PROXY=http://172.21.17.110:3128
+export http_proxy=http://172.21.17.110:3128
+sudo -E bundle install
+
+
+사이트 오픈
+- 그 전에 다운로드 사이트를 IT 관리자 통해 오픈해야 함
+- Jenkins 사이트 3개
+- Redmine 사이트 2개
+ files.rubyforge.vm.bytemark.co.uk
+  http://rubyforge.org/
+http://rubygems.org
+ http://production.cf.rubygems.org
+http://production.s3.rubygems.org
+https://*.rubyforge.org/
+- 다운로드는 몇 단계(사이트)를 거쳐야 함
+- Puppet
+

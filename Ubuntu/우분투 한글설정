@@ -1,0 +1,235 @@
+한글설정
+
+http://blog.naver.com/PostView.nhn?blogId=forlov3u&logNo=20156995330
+
+export HISTSIZE=500
+history (command)
+
+tomcat
+http://172.21.100.223:8080/
+CATALINA_HOME in /usr/share/tomcat7 and CATALINA_BASE in /var/lib/tomcat7
+
+apt-get install tomcat7 tomcat7-docs tomcat7-examples tomcat7-admin
+(각각 설치해야 함)
+
+
+
+jenkins
+
+/etc/default/jenkins
+포트 변경
+
+home
+/var/lib/jenkins
+
+
+
+
+
+git 플러그인 2.0 설치
+https://wiki.jenkins-ci.org/display/JENKINS/Git+plugin+2.0+beta+testing
+.hpi, .jpi 등 플러그인 폴더에 하나만 있어야 함
+
+
+
+putty
+폰트를 한글 폰트로 변경해야 함
+
+
+우분투 버전 확인
+cat /etc/issue
+lsb_release -a
+
+
+mysql
+
+sudo apt-get install mysql-server
+https://help.ubuntu.com/lts/serverguide/mysql.html
+
+
+root 접속: -uroot -preverse
+
+
+redmine 설치
+http://www.redmine.org/projects/redmine/wiki/RedmineInstall
+
+mysql 설치
+ruby 설치
+
+
+ sudo gem install -p http://172.21.17.110:3128 bundler
+
+export HTTP_PROXY=http://172.21.17.110:3128
+sudo -E bundle install
+
+sudo apt-get install ruby1.8-dev
+ sudo apt-get install ruby1.9.1-dev
+
+sudo gem install -p http://172.21.17.110:3128 json -v '1.8.0'
+이 때  Failed to build gem native extension. 나타나면
+ruby1.9.1-dev를 설치하면 됨
+
+sudo gem install -p http://172.21.17.110:3128 mysql2 -v '0.3.13'
+mysql2 설치 전에
+sudo apt-get install libmysql-ruby libmysqlclient-dev
+
+
+-> 여기까지 gem 설치 완료
+
+
+실행 (test)
+ /usr/bin/ruby1.9.1 script/rails server webrick -e production
+
+
+
+이슈: ruby 버전 충돌..
+- 이전 버전 삭제
+- 새로 설치
+- bundle install rake, bundle 재시작
+
+
+------------------------------------------------------------
+
+redmine 플러그인 설치
+
+
+방법
+rake redmine:plugins:migrate RAILS_ENV=production
+
+
+
+http://izect.kr/690
+https://github.com/a-ono/redmine_ckeditor/releases
+
+bundle install 필요할 수 있음
+
+imagemagick 설치 (에러가 다수 발생함)
+- apt-get install imagemagick
+- sudo apt-get install graphicsmagick-libmagick-dev-compat
+- sudo apt-get install libmagickwand-dev
+- sudo gem install -p http://172.21.17.110:3128 rmagick -v '2.13.2' 드디어 성공
+
+http://odysseymoon.tistory.com/category/Redmine
+ckeditor 새 버전을 공식 사이트에서 받아서 redmind 플러그인 폴더에 복사 & redmine 재시작
+=> 실패
+
+
+
+* Release Note
+https://github.com/hdgarrood/redmine_release_notes
+
+
+
+mysql 에러 발생하면 RAILS_ENV=production과 데이터베이스 설정이 올바른지 확인
+
+
+
+* daily status
+https://github.com/gs-lab/redmine_daily_status
+
+
+rake, bundle, ruby 버전이 호환되어야 함
+이상하면 다시 설치
+bundle 파일 첫 줄에 ruby 경로 있음
+
+-------------------
+
+
+smbclient //172.21.100.11/downloads --user=hi.shin
+
+
+
+
+--------------
+
+ruby 버전 선택
+
+sudo update-alternatives --config ruby
+
+
+% gem lib 위치는 제대로 인식되는가?
+
+
+
+-------------------------------
+
+gem 로컬 설치
+gem install --local path_to_gem/filename.gem
+
+
+
+
+
+
+
+---------
+레드마인 아파치 연결 실패
+- 좀 복잡한 것 같음
+
+
+ssh 자동 접속
+
+sshd_config 수정 필요
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile      %h/.ssh/authorized_keys
+
+
+
+
+------------------------------------------------------------------------
+
+리눅스 원격 접속
+
+http://ra2kstar.tistory.com/93
+http://blog.naver.com/PostView.nhn?blogId=oxcow119&logNo=60160622640
+
+=> 잘 안됨
+
+
+---------------
+
+sudo adduser username 후
+sudo adduser <username> sudo
+
+
+
+--------------------------------
+
+Gerrit2 설치
+
+
+Jetty 설치
+- sudo apt-get install jetty
+
+-----------------------------------
+
+git proxy 설정 (오후 3:00 2013-09-02)
+
+http://www.emilsit.net/blog/archives/how-to-use-the-git-protocol-through-a-http-connect-proxy/
+
+git 프로토콜은 단순히 proxy만 사용한다고 되는 일이 아니다.
+=> 위 사이트대로 했는데 잘 안됨
+=> github.com에서 http가 지원되므로 일단 pass
+
+
+---------
+gerrit 설치
+
+standalone로 설치
+
+https://git.eclipse.org/r/Documentation/install.html
+
+
+mysql driver를 gerrit/lib에 복사
+
+성공할 때까지 로그 보면서 아래를 반복함
+java -jar gerrit.war init -d /path/to/your/gerrit_application_directory
+
+
+
+------
+리눅스 시간 변경
+http://www.christopherirish.com/2012/03/21/how-to-set-the-timezone-on-ubuntu-server/
+
+sudo dpkg-reconfigure tzdata

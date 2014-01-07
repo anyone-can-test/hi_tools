@@ -1,0 +1,11 @@
+리눅스 문자열 바꾸기
+sed -i 's/\/etc\/puppetlabs//g' new_list
+
+sed
+stream editor 
+
+-i : edit files in place
+
+
+변수 사용
+sed -i 's/.\/'$1'//g' original_permission_ownership.list
