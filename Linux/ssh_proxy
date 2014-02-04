@@ -1,0 +1,5 @@
+
+~/.ssh/config
+
+host github.com
+    ProxyCommand nc -X connect -x proxy_host:port %h %p
