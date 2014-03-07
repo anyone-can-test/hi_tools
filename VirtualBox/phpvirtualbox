@@ -1,0 +1,25 @@
+ubuntu server에 설치
+
+# useradd –d /home/vbox –m vbox
+# passwd vbox
+# adduser vbox vboxusers
+
+ /etc/default/virtualbox
+VBOXWEB_USER=vbox
+
+
+# update-rc.d vboxweb-service defaults
+# /etc/init.d/vboxweb-service start
+
+
+# cd /var/www/phpvirtualbox/
+# cp config.php-example config.php
+# vi config.php
+...생략...
+var $username = 'vbox';
+var $password = '아까 설정한 패스워드';
+...생략...
+
+
+http://IP주소/phpvirtualbox
+admin/admin
