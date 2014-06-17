@@ -1,0 +1,16 @@
+
+
+1. copy & paste 시 tab 처리
+By default, when you copy and paste in Vi or Vim (through a remote SSH session), it adds incremented tabs on each line. 
+To solve this problem, simply type: set paste in the window or add the set paste in /etc/vim/vimrc or in the ~/.vimrc file
+
+
+syntax on
+filetype on
+au BufNewFile,BufRead *.pp set filetype=ruby
+set fileencodings=utf-8,euc-kr
+set autoindent
+set tabstop=4
+set paste
+
+au BufNewFile,BufRead *.groovy  setf groovy
