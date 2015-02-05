@@ -1,0 +1,6 @@
+$DEFAULT_CONTENT
+
+${CHANGES}
+
+${CHANGES, showPaths=true, format="%a: %p %m %d %r"}
+
