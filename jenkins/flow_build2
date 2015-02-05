@@ -1,0 +1,52 @@
+reason = params["REASON_TO_BUILD"]
+diag_skip = params["DIAG_SKIP"]
+set = params["SET"]
+
+branch =  params["BRANCH"]
+target=params["TARGET"]
+
+script_branch = params["SBRANCH"]
+script_target=params["STARGET"]
+
+if ( set == "SPRINT" ) {
+   deploy_item = "flow_release_deploy_sprint_run"
+} else {
+   deploy_item = "flow_release_deploy_root_run"
+}
+
+build.description = branch + ", " + set
+
+// output values
+out.println '----------------------------------------------'
+out.println params
+out.println "branch:" + branch
+out.println "target:" + target
+out.println "script_branch:"+script_branch
+out.println "script_target:" + script_target
+out.println "deploy_item:"+ deploy_item
+out.println '----------------------------------------------'
+
+// who run this build?
+def log = new BufferedReader(build.logReader)
+def readline = log.readLine()
+def user = readline.substring(readline.length() - 3)
+
+// make email contents
+def email_contents = build.environment.get("BUILD_URL")
+email_contents += "\nby " + user
+email_contents += "\n" + params
+
+if ( set == "SPRINT" ) {
+    build("bf_run_email", BUILD_PROGRESS:"스프린트환경 빌드/배포 시작, by " + user, CONTENTS:email_contents)
+}
+
+
+guard { 
+    b = build("flow_release_build", BRANCH:branch, TARGET:target)
+   	b = build(deploy_item, BRANCH:branch, TRAGET:target, SBRANCH:script_branch, STARGET:script_target, DIAG_SKIP:diag_skip, REASON_TO_BUILD:reason)
+} rescue {
+    if ( set == "SPRINT" ) { 
+        email_contents += "\n\n실패: " + b.environment.get("BUILD_URL")
+    	build("bf_run_email", BUILD_PROGRESS:"스프린트환경 빌드/배포 종료", BUILD_RESULT: b.result, CONTENTS:email_contents)
+    }
+}

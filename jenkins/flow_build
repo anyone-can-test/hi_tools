@@ -1,0 +1,15 @@
+def matcher = manager.getLogMatcher("test sending many mails: (.*)")
+def text = ""
+if(matcher?.matches()) {
+   def mail_count = matcher.group(1)
+   def tmp1 = mail_count + " mails"
+   text += tmp1
+}
+
+matcher = manager.getLogMatcher("Elapsed Time\\(s\\): (.*)")
+if(matcher?.matches()) {
+   def elapsed = matcher.group(1)
+   text += " " + elapsed
+}
+
+manager.addShortText(text)
