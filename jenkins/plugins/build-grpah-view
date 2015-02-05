@@ -1,0 +1,4 @@
+https://wiki.jenkins-ci.org/display/JENKINS/Build+Graph+View+Plugin
+목적: flow 빌드에서 오류를 좀 더 빨리 찾기 위해 Graph View를 이용
+아래 그림(실제 테스트 결과)과 같이 실행된 모든 빌드의 상태를 한눈에 파악 가능합니다.
+
