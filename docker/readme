@@ -1,6 +1,8 @@
 
 http://blog.nacyot.com/articles/2014-01-27-easy-deploy-with-docker/
 
+# 리눅스에서만 지원된다.
+# kernel을 바로 호출한다.
 
 sudo status docker
 sudo docker info
