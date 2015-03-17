@@ -1,0 +1,45 @@
+udo status docker
+sudo docker info
+
+
+docker
+- a client-server architecture
+- client request -> docker daemon
+
+proxy
+/etc/default/docker 수정,
+수정 후 restart (sudo restart docker)
+
+
+sudo docker run -i -t ubuntu /bin/bash
+
+image to create a container
+실행할 command
+
+local에서 ubuntu 이미지를 검색
+-> 실패
+-> Docker Hub registry 검색
+-> 다운로드
+
+
+containers 목록 보기
+- sudo docker ps -a
+
+
+Starting a stopped container
+sudo docker start xxxxx
+
+
+interactive session 에 접속
+sudo docker attach xxxxx
+
+
+Creating daemonized containers
+- longer-running containers
+
+sudo docker run --name daemon_save -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"
+
+sudo docker logs daemon_save
+
+
+
