@@ -1,0 +1,4 @@
+http://jenkins-ci.org/content/official-jenkins-lts-docker-image
+
+
+1. sudo docker pull jenkins
